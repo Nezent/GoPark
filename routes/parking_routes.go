@@ -7,4 +7,5 @@ import (
 
 func ParkingRoute(router *gin.Engine){
 	router.GET("/",controllers.ParkingLotController)
+	router.POST("/create",controllers.CreateParkingLot)
 }

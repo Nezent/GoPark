@@ -10,8 +10,9 @@ type ParkingLot struct {
 	ID uuid.UUID `gorm:"type:uuid;default:uuid_generate_v4();primaryKey"`
 	Name string `gorm:"type:varchar(100)"`
 	Slots int32  `gorm:"type:smallint"`
-	IsAvailable bool `gorm:"type:boolean"`
-	IsMaintainance bool `gorm:"type:boolean"`
+	IsAvailable bool `gorm:"type:boolean;default:true"`
+	IsMaintainance bool `gorm:"type:boolean;default:false"`
+	SlotsList []Slots    `gorm:"foreignKey:ParkingLotID"`
 }
 
 type Slots struct {
@@ -24,5 +25,5 @@ type Slots struct {
 
 type Vehicle struct {
 	ID uuid.UUID `gorm:"type:uuid;default:uuid_generate_v4();primaryKey"`
-	VehicleType string `gorm:"type:varchar(100)"`	
+	RegistrationNumber string `gorm:"type:varchar(100)"`	
 }
